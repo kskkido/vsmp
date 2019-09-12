@@ -1,0 +1,6 @@
+[submodule "modules/single-frame"]
+	path = modules/single-frame
+	url = https://github.com/kskkido/single-frame.git
+[submodule "modules/epd"]
+	path = modules/epd
+	url = https://github.com/kskkido/epaper.git
