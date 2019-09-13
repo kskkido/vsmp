@@ -3,7 +3,7 @@ const path = require('path');
 const { promisify } = require('./utils/promise');
 const { displayFromFile } = require('./modules/epd');
 const { singleFrame } = require('./modules/single-frame');
-const { frame } = require('./config');
+const { frame } = require('./config.json');
 
 const relativePath = filePath => (
   path.join(
@@ -14,7 +14,7 @@ const relativePath = filePath => (
 
 const reset = () => (
   promisify(fs.writeFile)(
-    relativePath('/config.js'),
+    relativePath('/config.json'),
     JSON.stringify(({ frame: 0 }), '', ' ')
   )
 )
@@ -26,7 +26,7 @@ const progress = () => (
   })
     .then(displayFromFile)
     .then(() => promisify(fs.writeFile)(
-      relativePath('/config.js'),
+      relativePath('/config.json'),
       JSON.stringify(({ frame: frame + 1 }), '', ' ')
     ))
     .catch(e => console.error(e))
